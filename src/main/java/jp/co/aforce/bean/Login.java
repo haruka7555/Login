@@ -1,6 +1,6 @@
-package jp.co.aforce.beans;
+package jp.co.aforce.bean;
 
-public class Customer implements java.io.Serializable{
+public class Login implements java.io.Serializable{
 	
 	private int id;
 	private String name;

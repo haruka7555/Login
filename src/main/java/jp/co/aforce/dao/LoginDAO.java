@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import jp.co.aforce.beans.Customer;
+import jp.co.aforce.bean.Login;
 
-public class CustomerDAO extends DAO{
+public class LoginDAO extends DAO{
 	
-	public Customer search(String email, String password)
+	public Login search(String name, String email, String password)
 	throws Exception{
-		Customer customer = null;
+		Login login = null;
 		
 		Connection con = getConnection();
 		
@@ -21,13 +21,15 @@ public class CustomerDAO extends DAO{
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-			customer = new Customer();
-			customer.setPassword(rs.getString("password"));
-			customer.setEmail(rs.getString("email"));
+			login = new Login();
+			login.setId(rs.getInt("id"));
+			login.setName(rs.getString("name"));
+			login.setPassword(rs.getString("password"));
+			login.setEmail(rs.getString("email"));
 		}
 		
 		st.close();
 		con.close();
-		return customer;
+		return login;
 	}
 }
